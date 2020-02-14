@@ -21,7 +21,7 @@ def reward_1(cart_pole):
     else:
         return  
     
-def reward_2(cart_pole):
+def reward_8(cart_pole):
     theta_norm = angle_normalize(cart_pole.state[2])
     w = cart_pole.state[3]
     x = cart_pole.state[0]
@@ -29,23 +29,12 @@ def reward_2(cart_pole):
     
     if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
         return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.01*w**2 - 0.0001*v**2 + 1
     else:
-        return  -(theta_norm**2 + 0.02*x**2 + 0.002*v**2)
+        return  np.cos(theta_norm) - 0.001*w**2 -0.001*v**2 
     
-def reward_3(cart_pole):
-    theta_norm = angle_normalize(cart_pole.state[2])
-    w = cart_pole.state[3]
-    x = cart_pole.state[0]
-    v = cart_pole.state[1]
-    
-    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
-        return -500
-    elif (abs(theta_norm)<0.5):
-        return  20*(np.pi-abs(theta_norm))**2 - w**2 - (5*x)**2
-    else:
-        return -((theta_norm)**4 + w**2 + (5*x)**2 + v**4)
-    
-def reward_4(cart_pole):
+def reward_11(cart_pole):
     theta_norm = angle_normalize(cart_pole.state[2])
     w = cart_pole.state[3]
     x = cart_pole.state[0]
@@ -53,8 +42,97 @@ def reward_4(cart_pole):
     
     if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
         return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.01*w**2 + 1
     else:
-        return 2*np.cos(theta_norm) - 0.01*w**2 -  0.001*v
+        return  np.cos(theta_norm) - 0.001*w**2 -0.001*x**2 -0.001*v**2
+    
+def reward_12(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 2
+    else:
+        return  np.cos(theta_norm) + 0.01*w**2 - 0.01*x**2 
+    
+def reward_13(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 2
+    else:
+        return  np.cos(theta_norm) - 0.1*w**2*np.cos(theta_norm) - 0.01*x**2
+
+
+    
+
+
+def reward_15(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/8):
+        return  2*np.cos(theta_norm) - w**2 + 4
+    
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 2
+    else:
+        return  np.cos(theta_norm) - 0.1*w**2*np.cos(theta_norm) - 0.01*x**2
+    
+def reward_14(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/10):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 4
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 2
+    else:
+        return np.cos(theta_norm) - 0.01*w**2*np.cos(theta_norm) -0.001*x**2 
+    
+def reward_10(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.01*w**2 + 1
+    else:
+        return  np.cos(theta_norm) - 0.001*w**2 -0.001*x**2 
+    
+def reward_9(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  2*np.cos(theta_norm) - 0.1*w**2 + 1
+    else:
+        return  np.cos(theta_norm) - 0.001*w**2 -0.001*v**2 
+    
     
 def reward_5(cart_pole):
     theta_norm = angle_normalize(cart_pole.state[2])
@@ -76,4 +154,18 @@ def reward_6(cart_pole):
     if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
         return -100
     else:
-        return  np.cos(theta_norm) - 0.01*w**2
+        return  np.cos(theta_norm) - 0.008*w**2
+    
+def reward_7(cart_pole):
+    theta_norm = angle_normalize(cart_pole.state[2])
+    w = cart_pole.state[3]
+    x = cart_pole.state[0]
+    v = cart_pole.state[1]
+    
+    if (x < -cart_pole.x_threshold or x > cart_pole.x_threshold):
+        return -100
+    elif(abs(theta_norm)<np.pi/2):
+        return  np.cos(theta_norm) - 0.008*w**2 -0.001*v**2 + 5
+    else:
+        return  np.cos(theta_norm) - 0.008*w**2 -0.001*v**2 
+        

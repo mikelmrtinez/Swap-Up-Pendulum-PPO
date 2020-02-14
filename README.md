@@ -1,4 +1,2 @@
-# Pendulum_mikel
-The main_ppo_OneOpt.py file is used to train the model from scratch where you can set al the hyperparameters for the training process. 
-The  visualize_pendulum.py allows you to visualize the performance of a given model that you select from the folder models.
-PPO_OneOpt.py is the algorithm with of Proximal Policy Optimizer coded on a sequential way.
+In this repository you can find the project of the CartPole proposed to the students as the Reinforcement Learning final project "Swap-Up pendulum Continuous CartPole problem".
+By running the file main.py you train the model and set the hyperparameters. The visualize_mode.py file renders the model that we have train previously as a proof that the problem is solved.
